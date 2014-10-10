@@ -1,0 +1,368 @@
+<!--
+__author__ = "Samuel Carlisle"
+__copyright__ = "Copyright 2014"
+__credits__ = ["samthetechie"]
+__license__ = "GPL Affero"
+__version__ = "3"
+__maintainer__ = "Samuel Carlisle"
+__email__ = "samuelcarlisle@gmail.com"
+__status__ = "Development"
+                                                       ____
+           ___                                      .-~. /_"-._        _______________________________
+          `-._~-.                                  / /_ "~o\  :Y      / I made thinkfarm-map so that  \
+              \  \                                / : \~x.  ` ')      |  farmers could have fun with  |
+               ]  Y                              /  |  Y< ~-.__j      |   map mashups of the space    |
+              /   !                        _.--~T : l  l<  /.-~      <      I hope you like it :)     |
+             /   /                 ____.--~ .   ` l /~\ \<|Y          \__________________samthetechie_/
+            /   /             .-~~"        /| .    ',-~\ \L|
+           /   /             /     .^   \ Y~Y \.^>/l_   "--'
+          /   Y           .-"(  .  l__  j_j l_/ /~_.-~    .
+         Y    l          /    \  )    ~~~." / `/"~ / \.__/l_
+         |     \     _.-"      ~-{__     l  :  l._Z~-.___.--~
+         |      ~---~           /   ~~"---\_  ' __[>
+         l  .                _.^   ___     _>-y~
+          \  \     .      .-~   .-~   ~>--"  /
+           \  ~---"            /     ./  _.-'
+            "-.,_____.,_  _.--~\     _.-~
+                        ~~     (   _}  
+                                `. ~(
+                                  )  \
+                                 /,`--'~\--'
+This file is part of thinkfarm-usermap.
+
+thinkfarm-usermap is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+thinkfarm-usermap is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU Affero Public License
+along with thinkfarm-usermap.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<!--                                                (     )                         
+                     _   _          _            _   ( _ )                          
+                    | | | |        | |          | |   (_)                          
+ ___  __ _ _ __ ___ | |_| |__   ___| |_ ___  ___| |__  _  ___  
+/ __|/ _` | '_ ` _ \| __| '_ \ / _ \ __/ _ \/ __| '_ \| |/ _ \
+\__ \ (_| | | | | | | |_| | | |  __/ ||  __/ (__| | | | |  __/
+|___/\__,_|_| |_| |_|\__|_| |_|\___|\__\___|\___|_| |_|_|\___
+             Electronic Engineer, Activist, Hacker and Maker.
+                   #sukey, #cryptoparty, #hackspace, #occupy.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>thinkfarm-map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://code.leafletjs.com/leaflet-0.3.1/leaflet.ie.css" />
+    <![endif]-->
+    <script src="leaflet.js"></script>    
+
+<!--
+     _         _      
+    | |       | |     
+ ___| |_ _   _| | ___ 
+/ __| __| | | | |/ _ \
+\__ \ |_| |_| | |  __/
+|___/\__|\__, |_|\___|
+          __/ |       
+         |___/        
+-->
+
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+
+	<script>
+
+		var map = L.map('map').setView([1,1], 5);
+		var polygon_coords = "";
+		L.tileLayer('tiles/{z}/{x}/{y}.jpg', {
+			minZoom: 0,			
+			maxZoom: 5,
+			tileSize: 256,
+			continuousWorld: true,
+			attribution: 'http://thinkfarm.de'
+		}).addTo(map);
+        
+//current location if set in url
+        addHashLocationMarker();
+
+/**
+                      _                 
+                     | |                
+ _ __ ___   __ _ _ __| | _____ _ __ ___ 
+|  _ ` _ \ / _` |  __| |/ / _ \  __/ __|
+| | | | | | (_| | |  |   <  __/ |  \__ \
+|_| |_| |_|\__,_|_|  |_|\_\___|_|  |___/                                        
+**/
+
+/**
+
+//tshirts
+		L.marker([-71.17358, -91.71387]).addTo(map)
+			.bindPopup("t-shirts").openPopup();
+
+//bar
+
+		L.marker([-74.54333, -107.22656]).addTo(map)
+			.bindPopup("Foo:bar").openPopup();
+
+//info
+		L.marker([-72.52813, -98.26172]).addTo(map)
+			.bindPopup("Info").openPopup();
+
+//tickets
+		L.marker([-69.39578, -82.30957]).addTo(map)
+			.bindPopup("Tickets").openPopup();
+
+**/
+
+/*
+		L.circle([51.508, -0.11], 500, {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.5
+		}).addTo(map).bindPopup("I am a circle.");
+*/
+
+
+
+/**
+             _                             
+            | |                            
+ _ __   ___ | |_   _  __ _  ___  _ __  ___ 
+|  _ \ / _ \| | | | |/ _` |/ _ \|  _ \/ __|
+| |_) | (_) | | |_| | (_| | (_) | | | \__ \
+| .__/ \___/|_|\__, |\__, |\___/|_| |_|___/
+| |             __/ | __/ |                
+|_|            |___/ |___/                 
+
+**/
+
+
+/**
+//Hall4
+		L.polygon([
+			[-75.53014, -165.62988],
+			[-72.738, -165.58594],
+			[-67.67608, -157.85156],
+			[-65.94647, -142.11914],
+			[-67.70945, -126.21094],
+			[-71.55274, -121.11328],
+			[-75.54111, -127.96875]
+		]).addTo(map).bindPopup("<h1>Hall 4</h1> 11:00 - Opening Event<br>bios(en)");
+
+//hall 6
+		L.polygon([
+			[-82.84244, -98.70117],
+			[-81.46626, -81.91406],
+			[-83.03688, -74.35547],
+			[-83.91438, -73.56445],
+			[-84.50782, -75.14648],
+			[-84.49097, -95.00977],
+			[-83.82049, -98.78906]
+		]).addTo(map).bindPopup("<h1>Hall 6</h1> 12:45 - ISP`s black box<br>Kay Hamacher(de)");
+
+//Hackcenter
+		L.polygon([
+			[-84.4994, -166.99219],
+			[-78.0983, -169.54102],
+			[-78.0983, -131.48437],
+			[-76.01609, -127.00195],
+			[-75.97355, -121.9043],
+			[-75.99484, -121.81641],
+			[-78.95456, -123.13477],
+			[-79.00496, -119.88281],
+			[-83.05816, -119.9707],
+			[-83.06877, -122.51953],
+			[-84.54136, -122.7832]
+		]).addTo(map).bindPopup("Hackcenter - <a href=\"https://events.ccc.de/congress/2012/wiki/Hackcenter\" target=\"_blank\">Wiki: Hackcenter</a>");
+
+//Lounge
+		L.polygon([
+			[-80.92843, -68.81836],
+			[-81.79876, -59.85352],
+			[-82.41404, -62.92969],
+			[-84.12497, -40.25391],
+			[-82.59744, -31.11328],
+			[-80.44493, -53.26172],
+			[-81.03862, -56.42578],
+			[-80.16371, -65.47852],
+		]).addTo(map).bindPopup("Lounge - <a href=\"https://events.ccc.de/congress/2012/wiki/Lounge\" target=\"_blank\">Wiki: Lounge</a>");
+//Wardrobe
+//nom
+
+		L.polygon([
+			[-66.54826, -111.09375],
+			[-64.47279, -91.31836],
+			[-68.98993, -88.02246],
+			[-70.40735, -95.40527],
+			[-66.49574, -98.83301],
+			[-67.52537, -109.77539],
+		]).addTo(map).bindPopup("Wardrobe - <a href=\"https://events.ccc.de/congress/2012/wiki/Wardrobe\" target=\"_blank\">Wardrobe</a>");
+
+//Heaven
+		L.polygon([
+			[-82.76537, 12.65625],
+			[-82.85338, 32.69531],
+			[-84.54136, 32.34375],
+			[-84.50782, 13.00781],
+		]).addTo(map).bindPopup("Heaven - <a href=\"https://events.ccc.de/congress/2012/wiki/Heaven\" target=\"_blank\">Wiki: Heaven</a>");
+
+//Hall 1:0x02		
+L.polygon([
+	 [-17.97873, -164.35547],
+	 [-21.94305, -152.40234],
+	 [-21.45307, -148.88672],
+	 [-16.97274, -148.71094],
+	 [-16.97274, -135.17578],
+	 [-21.28937, -134.82422],
+	 [-21.45307, -132.01172],
+	 [-17.30869, -119.00391],
+	 [-1.58183, -117.94922],
+	 [5.96575, -121.46484],
+	 [4.74068, -120.23437],
+	 [6.14055, -116.54297],
+	 [25.64153, -126.38672],
+	 [27.52776, -127.08984],
+	 [28.45903, -131.30859],
+	 [27.37177, -132.1875],
+	 [29.68805, -142.38281],
+	 [27.21556, -152.22656],
+	 [29.07538, -153.45703],
+	 [27.68353, -157.67578],
+	 [25.95804, -157.14844],
+	 [-0.17578, -169.80469],
+	 [-0.35156, -165.76172],
+		]).addTo(map).bindPopup("<h1>Hall 1:0x02</h1>  11:00 - Opening Event<br>bios(en)")
+
+//Hall 1:0x03
+		L.polygon([
+		[26.74561, 8.08594],
+		[28.92163, 11.95313],
+		[27.37177, 13.00781],
+		[29.53523, 22.5],
+		[27.37177, 32.69531],
+		[28.76766, 34.10156],
+		[28.61346, 38.32031],
+		[26.27371, 38.32031],
+		[25.64153, 39.02344],
+		[0.17578, 50.97656],
+		[-8.58102, 50.625],
+		[-11.69527, 46.40625],
+		[-29.68805, 45.17578],
+		[-30.14513, 43.06641],
+		[-32.69487, 33.04688],
+		[-33.13755, 12.65625],
+		[-30.29702, 3.51563],
+		[-30.44867, 0.87891],
+		[-11.86735, 0],
+		[-9.1021, -4.04297],
+		[0, -4.57031],
+		[26.11599, 7.91016],
+		]).addTo(map).bindPopup("<h1>Hall 1:0x03</h1>  11:00 - Opening Event<br>bios(en)");
+
+//Hall 1:0x04
+		L.polygon([
+		[66.37276, -168.39844],
+		[64.32087, -150.46875],
+		[64.32087, -132.89062],
+		[66.37276, -115.66406],
+		[76.01609, -113.90625],
+		[81.14748, -126.38672],
+		[81.44014, -127.08984],
+		[81.56997, -131.13281],
+		[81.41393, -131.66016],
+		[81.79876, -142.55859],
+		[81.36129, -152.57812],
+		[81.64693, -153.63281],
+		[81.44014, -152.22656],
+		[81.72319, -153.10547],
+		[81.51827, -157.67578],
+		[81.20142, -157.5],
+		[80.29793, -159.96094],
+		[76.01609, -169.45312],
+		[66.65298, -168.22266],
+		]).addTo(map).bindPopup("<h1>Hall 1:0x02</h1> Opening Event<br>bios(en)");
+**/
+
+		L.polygon([
+	 	[1.75754, -62.75391],
+	 	[-1.93323, 45],
+	 	[-50.40152, 42.71484],
+	 	[-46.80006, -56.95312]
+	 	]).addTo(map).bindPopup("<h1>Stefan's Desk</h1>email: dsoifdsofj@dsfldsjfd.com ext: 209340-32803 wishlist url: http://thinkfarm.wiki/user:stefan/wishlist");
+/**
+		L.polygon([
+	 	[70.61261, 95.625],
+	 	[70.61261, 150.82031],
+	 	[35.74651, 150.82031],
+	 	[35.46067, 95.625]
+	 	]).addTo(map).bindPopup("<h1>Dining Room</h1> Eat food here. Quatschen.  Blah.");
+**/
+/**
+                 _             _ 
+                | |           | |
+  ___ ___  _ __ | |_ _ __ ___ | |
+ / __/ _ \| '_ \| __| '__/ _ \| |
+| (_| (_) | | | | |_| | | (_) | |
+ \___\___/|_| |_|\__|_|  \___/|_|
+
+**/
+
+		var popup = L.popup();
+
+		function onMapClick(e) {
+			polygon_coords = polygon_coords + "["+e.latlng.toString()+"],";
+            location_link = window.location.href.replace(window.location.hash,"") + "#/loc/";
+            location_link += e.latlng.lat + '/' + e.latlng.lng;
+			
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + polygon_coords + 
+                    '<br /><a href="' + location_link + '">Link to location</a>')
+				.openOn(map);
+			
+		}
+
+		map.on('click', onMapClick);
+        
+        function addHashLocationMarker() {
+            if(window.location.hash.indexOf("loc") !== -1) {
+                hash = window.location.hash.split('/');
+                L.marker([hash[2], hash[3]]).addTo(map)
+                    .bindPopup("linked location").openPopup();
+                map.setView([hash[2], hash[3]], 7);
+            }
+        }
+        
+        // TODO this feels a bit dirty, but I have no better idea without
+        // reloading the whole page.
+        if ("onhashchange" in window) {
+            window.onhashchange = (function() {
+                addHashLocationMarker();
+            });
+        }
+
+	</script>
+</body>
+</html>
+
