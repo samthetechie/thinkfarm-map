@@ -55,6 +55,9 @@ along with thinkfarm-usermap.  If not, see <http://www.gnu.org/licenses/>.
                    #sukey, #cryptoparty, #hackspace, #occupy.
 </pre>
 
+Screenshot
+==========
+![](https://github.com/samthetechie/thinkfarm-map/blob/master/images/screenshot.png)
 
 Example Usage
 =============
