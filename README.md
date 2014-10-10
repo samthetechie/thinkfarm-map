@@ -55,11 +55,21 @@ along with thinkfarm-usermap.  If not, see <http://www.gnu.org/licenses/>.
                    #sukey, #cryptoparty, #hackspace, #occupy.
 </pre>
 
+Screenshot
+==========
+![](https://github.com/samthetechie/thinkfarm-map/blob/master/images/screenshot.png)
 
 Example Usage
 =============
-
+1. To Slice new tiles from an image:
+---------------------------------
 ./panslicer.py %s <image> % sys.argv[0]
+
+2. Rename the generated tiles folder and then Symlink to "Tiles"
+
+3. Open index.html in a browser
+
+4. hack on index.html to add polygons, markers and control logic.
 
 Deployment
 ==========
